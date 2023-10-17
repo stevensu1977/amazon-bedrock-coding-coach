@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import { Input, IconButton, Box, Button, Select, AlertDialog, AlertDialogOverlay, AlertDialogContent, AlertDialogHeader, AlertDialogBody, AlertDialogFooter, Textarea } from "@chakra-ui/react";
 import { IoSettingsOutline } from "react-icons/io5"
@@ -12,7 +12,7 @@ import {authSettings,authState} from "../state"
 const Setting = () => {
     const [isOpen, setIsOpen] = useState(false);
     const cancelRef = useRef<HTMLButtonElement>(null);
-    const [authType, setAuthType] = useState("IAMROLE");
+    
     const [akValue, setAkValue] = useState("");
     const [skValue, setSkValue] = useState("");
     const [cognitoIDValue, setCognitoIDValue] = useState("");
@@ -21,6 +21,10 @@ const Setting = () => {
 
     const setAuthSettings = useSetRecoilState(authSettings)
     const auth= useRecoilValue(authState)
+
+    const [authType, setAuthType] = useState(auth.role==="admin"?"IAMROLE":"AKSK");
+
+    
 
     const onClose = () => setIsOpen(false);
 
