@@ -45,11 +45,12 @@ console.log(text);
       "top_p": 0.9,
     }
 
-    let client = new BedrockRuntimeClient({});
+    let client = new BedrockRuntimeClient({region: "us-east-1"});
     const {authType,akValue,skValue,cognitoIDValue} = auth
 
     if (authType==="AKSK"){
       client = new BedrockRuntimeClient({
+        region: "us-east-1",
         credentials: {
           accessKeyId: akValue??"", 
           secretAccessKey: skValue??""
@@ -81,6 +82,7 @@ console.log(text);
      
 
       client = new BedrockRuntimeClient({
+        region: "us-east-1",
         credentials: {
           accessKeyId: ak,
           secretAccessKey: sk,

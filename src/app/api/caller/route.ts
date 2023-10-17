@@ -51,6 +51,7 @@ const getCallerIdentity = async ({authType,akValue, skValue,cognitoIDValue,cogni
        
 
         sts = new STS({
+          region: "us-east-1",
           credentials: {
             accessKeyId: ak,
             secretAccessKey: sk,
