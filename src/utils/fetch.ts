@@ -9,12 +9,13 @@ interface ChatMessage {
   reply: string
 }
 
-export default async function fetchRequest(method: "GET"|"POST",url: string,  params: { [key: string]: any,history?:ChatMessage[]}  ) {
+export default async function fetchRequest(method: "GET"|"POST",url: string, accessToken:string, params: { [key: string]: any,history?:ChatMessage[]}  ) {
   
   // const localSettings = JSON.parse(localStorage.getItem('settings') as string);
   // const access_token=localStorage.getItem('accessToken');
-  const access_token= "SK-123456789012"
 
+
+  console.log(atob(accessToken),accessToken)
   console.log(history)
 
   if (method==="POST"){
@@ -22,7 +23,7 @@ export default async function fetchRequest(method: "GET"|"POST",url: string,  pa
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${access_token}`
+        'Authorization': `Bearer ${accessToken}`
       },
       body: JSON.stringify(params)
     });

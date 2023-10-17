@@ -7,8 +7,12 @@ import {githubLight} from '@uiw/codemirror-theme-github';
 import {python} from "@codemirror/lang-python";
 
 import {fetchRequestCode} from "../../utils/fetch";
+import {runResult} from "../../state";
+import { useSetRecoilState } from "recoil";
+
 
 export const baseURL = process.env.NETX_PUBLIC_API_SERVER_URL || 'http://localhost:3000';
+
 
 
 interface ExcuteCodeProps {
@@ -18,12 +22,18 @@ interface ExcuteCodeProps {
 
 const ExecuteCodeButton = ({language,code}:ExcuteCodeProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [errorMessage, setErrorMessage]=useState("");
+  
   const onClose = () => setIsOpen(false);
   const cancelRef = useRef<HTMLButtonElement>(null);
   const [text, setText] = useState(code);
   const [output, setOutput] = useState('');
+
+  const setRunResult=useSetRecoilState(runResult);
+  
  
   const onExecute = () => {
+    
     console.log(language,code)
 
     
@@ -38,6 +48,9 @@ const ExecuteCodeButton = ({language,code}:ExcuteCodeProps) => {
           const {run }=JSON.parse(body);
           
           if(run){
+            if(run.stderr!==""){
+              setErrorMessage(`language: ${language}\n code: ${text}\n stdout: ${run.stdout} \nstderr: ${run.stderr}, please fix this issue \n`)
+            }
             setOutput(`stdout: ${run.stdout} \nstderr: ${run.stderr} \n`);
           }
  
@@ -85,9 +98,19 @@ const ExecuteCodeButton = ({language,code}:ExcuteCodeProps) => {
             
             </AlertDialogBody>
             <AlertDialogFooter>
+              
               <Button ref={cancelRef} onClick={onClose}>
-                Cancel
+                Close
               </Button>
+              {errorMessage!==""&&
+              <Button ml={3} onClick={
+                ()=>{
+                  setRunResult(errorMessage)
+                }
+                }>
+               How to fix
+              </Button>
+              }
               <Button colorScheme="red" onClick={onExecute} ml={3}>
                 Execute
               </Button>

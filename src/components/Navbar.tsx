@@ -34,6 +34,7 @@ import {DarkModeSwitch} from "./DarkModeSwitch"
 import { authState } from '../state'
 import { useEffect, useState } from 'react'
 
+import Setting from "./Setting"
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure()
@@ -44,7 +45,6 @@ export default function Navbar() {
 
   
   useEffect(()=>{
-    console.log("this is navbar",auth)
     setClient(true);
   },[auth])
 
@@ -94,14 +94,8 @@ export default function Navbar() {
           <Button fontSize={'sm'} fontWeight={400} variant={'link'} >
           {isClient&&(auth?.user??"")}
           </Button>
-            
-            <IconButton
-            right={4}
-            icon={ <IoSettingsOutline/>}
-            aria-label="Toggle Theme"
-            />
-            
-             <DarkModeSwitch/>
+          {isClient&&auth&&<Setting/>}
+          <DarkModeSwitch/>
 
           </Stack>
        

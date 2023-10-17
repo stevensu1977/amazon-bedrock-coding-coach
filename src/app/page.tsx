@@ -2,11 +2,9 @@
 'use client'
 
 import {useState, useEffect} from "react";
-import { useRecoilState } from "recoil"
+import { useRecoilState} from "recoil"
 
 import Link  from 'next/link'
-
-import { nameState } from "../state"
 
 import {
   Flex,
@@ -19,9 +17,11 @@ import {
 } from '@chakra-ui/react'
 
 
+import { nameState} from "../state"
 
 export default function CallToActionWithIllustration() {
   const [name, setName] = useRecoilState(nameState)
+  
   const [isClient, setIsClient] = useState(false)
 
  
@@ -52,19 +52,19 @@ export default function CallToActionWithIllustration() {
         <Stack spacing={6} direction={'row'}>
         <Link href="signin">
           <Button
-            rounded={'full'}
             px={6}
+            w={"10vw"}
             colorScheme={'orange'}
             bg={'orange.400'}
+           
             _hover={{ bg: 'orange.500' }}>
-            Get started
+            Get Start
           </Button>{'   '}
-          <Button rounded={'full'} px={6} ml="20px">
-            Learn more
-          </Button>
+         
         </Link>
+        
         </Stack>
-        <Flex w={'50vw'}>
+        <Flex w={'50vw'} justifyContent="center" alignItems="center">
         <Image
               alt={'Hero Image'}
               fit={'cover'}

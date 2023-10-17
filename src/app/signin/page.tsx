@@ -13,6 +13,8 @@ import {
   FormLabel,
   Heading,
   Input,
+  InputGroup,
+  InputRightElement,
   Stack,
   Image,
 } from '@chakra-ui/react'
@@ -38,9 +40,11 @@ async function Post(user:User) {
  
 }
 
-export default function SplitScreen() {
+export default function SigninScreen() {
   const [user, setUser] = useState<User>({email:"",password:""})
   const [isAuth, setAuth] = useState(false)
+  const [showPassword, setShowPassword] = useState(false); // New state variable
+
   const router = useRouter()
 
   const setAuthState = useSetRecoilState(authState)
@@ -65,7 +69,18 @@ export default function SplitScreen() {
           </FormControl>
           <FormControl id="password">
             <FormLabel>Password</FormLabel>
-            <Input type="password" onChange={(e) => setUser(({...user,password:e.target.value}))} />
+            <InputGroup>
+              <Input
+                type={showPassword ? 'text' : 'password'}
+                value={user.password}
+                onChange={(e) => setUser({ ...user, password: e.target.value })}
+              />
+              <InputRightElement width="4.5rem">
+                <Button h="1.75rem" size="sm" onClick={() => setShowPassword(!showPassword)}>
+                  {showPassword ? 'Hide' : 'Show'}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
           </FormControl>
           <Stack spacing={6}>
             <Stack
@@ -76,7 +91,6 @@ export default function SplitScreen() {
               <Text color={'blue.500'}>Forgot password?</Text>
             </Stack>
             <Button colorScheme={'blue'} variant={'solid'} onClick={()=>{
-              console.log(user)
               Post(user).then((res)=>{
                 if (res.status === "ok"){
                   setAuthState(res)
@@ -91,7 +105,7 @@ export default function SplitScreen() {
           </Stack>
         </Stack>
       </Flex>
-      <Flex flex={1}>
+      <Flex flex={1} >
         <Image
           alt={'Login Image'}
           objectFit={'cover'}
@@ -104,13 +118,3 @@ export default function SplitScreen() {
   )
 }
 
-// export default function Signup (){
-//     const [name, setName] = useRecoilState(nameState)
-    
-//     return (
-//        <div>
-//            <h1>Signup {name} </h1>
-//            <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
-//        </div>
-//     )
-// }

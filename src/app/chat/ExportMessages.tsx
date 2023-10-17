@@ -55,7 +55,7 @@ const ExportMessages = ({messages}:ExportMessagesProps) => {
             right={4}
             icon={ <MdOutlineFileDownload/>}
             aria-label="Toggle Theme"
-            colorScheme="teal"
+            colorScheme="green"
             onClick={() => setIsOpen(true)}
             />
 

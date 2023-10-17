@@ -23,6 +23,18 @@ const authState =atom({
 })
 
 
+const runResult =atom({
+  key: 'runResult',
+  default: '',
+})
+
+
+const authSettings =atom({
+  key: 'authSettings',
+  default: {"authType":"IAMROLE","akValue":"","skValue":"","cognitoIDValue":"","cognitoRegionValue":""},
+})
+
+
   
 export const chatMessagesState = atom<ChatMessage[]>({
     key: 'chatMessagesState',
@@ -30,4 +42,4 @@ export const chatMessagesState = atom<ChatMessage[]>({
     effects_UNSTABLE: [persistAtom]
   });
 
-export {nameState, authState}
+export {nameState, authState,runResult,authSettings}
