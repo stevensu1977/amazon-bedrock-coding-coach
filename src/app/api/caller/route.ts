@@ -17,7 +17,7 @@ interface AuthProps {
 
 const getCallerIdentity = async ({authType,akValue, skValue,cognitoIDValue,cognitoRegionValue}:AuthProps) => {
     try {
-      let sts = new STS({ apiVersion: 'latest' });
+      let sts = new STS({ apiVersion: 'latest',region: "us-east-1", });
       console.log("========",{authType,akValue, skValue,cognitoIDValue,cognitoRegionValue})
       if (authType==="AKSK"){
         sts = new STS({
@@ -79,7 +79,7 @@ export async function POST(req: NextRequest) {
   const { authType,akValue,skValue,cognitoIDValue,cognitoRegionValue } = await req.json(); // Extract the authType from the request body
   // Perform any required logic with the authType value
   if (authType==="IAMROLE"||authType==="AKSK"||authType==="COGNITO"){
-  const caller = await getCallerIdentity({authType:authType,akValue:akValue,skValue:skValue,cognitoIDValue:cognitoIDValue});
+  const caller = await getCallerIdentity({authType:authType,akValue:akValue,skValue:skValue,cognitoIDValue:cognitoIDValue,cognitoRegionValue:cognitoRegionValue});
   const res = NextResponse.json({ me: caller });
   return res;
   }
