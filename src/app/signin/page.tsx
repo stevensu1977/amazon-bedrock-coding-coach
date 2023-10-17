@@ -26,9 +26,12 @@ interface User{
   password: string
 }
 
+
+const baseURL = process.env.NETX_PUBLIC_API_SERVER_URL || 'http://localhost:3000';
+
 async function Post(user:User) {
 
-  const response = await fetch('http://localhost:3000/api/signin', {
+  const response = await fetch(`${baseURL}/api/signin`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
