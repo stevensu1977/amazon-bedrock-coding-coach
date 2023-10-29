@@ -8,6 +8,10 @@ This is AI coding coach use  amazon bedrock foundation model
 [![Little red riding hood](https://i.stack.imgur.com/XCRlR.png)](https://vimeo.com/3514904 "Little red riding hood - Click to Watch!")
 
 
+
+https://github.com/stevensu1977/amazon-bedrock-coding-coach/assets/6694421/e59c7c1f-5054-4f3a-8729-970d6f57af11
+
+
 ## Install 
 
 1. require: amazon bedrock claue access permession (we strong recommand use EC2 role)
