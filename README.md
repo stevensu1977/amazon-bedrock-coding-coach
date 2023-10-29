@@ -2,6 +2,8 @@
 This is AI coding coach use  amazon bedrock foundation model 
 
 
+[<img src="https://i.ytimg.com/vi/Hc79sDi3f0U/maxresdefault.jpg" width="50%">](https://vimeo.com/879129321 "CodeCoach Demo")
+
 ## Install 
 
 1. require: amazon bedrock claue access permession (we strong recommand use EC2 role)
