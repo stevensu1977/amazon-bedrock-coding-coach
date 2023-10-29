@@ -4,6 +4,10 @@ This is AI coding coach use  amazon bedrock foundation model
 
 [<img src="https://i.ytimg.com/vi/Hc79sDi3f0U/maxresdefault.jpg" width="50%">](https://vimeo.com/879129321 "CodeCoach Demo")
 
+
+[![Little red riding hood](https://i.stack.imgur.com/XCRlR.png)](https://vimeo.com/3514904 "Little red riding hood - Click to Watch!")
+
+
 ## Install 
 
 1. require: amazon bedrock claue access permession (we strong recommand use EC2 role)
@@ -17,14 +21,14 @@ This is AI coding coach use  amazon bedrock foundation model
     sudo systemctl start docker
     sudo usermod -aG docker ec2-user  #need relogin 
     sudo npm install yarn -g
-
+   
     git clone https://github.com/stevensu1977/amazon-bedrock-coding-coach.git
-
+   
     cd amazon-bedrock-coding-coach
 
 
     yarn
-
+    
     #修复piston-client 没有带application/json
     yarn add git+https://github.com/stevensu1977/node-piston
 
