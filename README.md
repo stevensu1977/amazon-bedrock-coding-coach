@@ -1,13 +1,9 @@
 # amazon-bedrock-coding-coach
-This is AI coding coach use  amazon bedrock foundation model 
+####  This repo is deprecated , please use https://github.com/aws-samples/bedrock-claude-codecoach
 
 
-[<img src="https://i.ytimg.com/vi/Hc79sDi3f0U/maxresdefault.jpg" width="50%">](https://vimeo.com/879129321 "CodeCoach Demo")
 
-
-[![Little red riding hood](https://i.stack.imgur.com/XCRlR.png)](https://vimeo.com/3514904 "Little red riding hood - Click to Watch!")
-
-
+This is AI coding coach use  amazon bedrock foundation model.
 
 https://github.com/stevensu1977/amazon-bedrock-coding-coach/assets/6694421/e59c7c1f-5054-4f3a-8729-970d6f57af11
 
